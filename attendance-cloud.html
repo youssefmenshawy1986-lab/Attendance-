@@ -6,146 +6,75 @@
 <title>Attendance</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#08080d;--s1:#0f0f16;--s2:#16161f;--s3:#1c1c27;
-  --b:#ffffff0d;--b2:#ffffff18;--b3:#ffffff28;
-  --pu:#9d8ff7;--pu2:#7c6ef0;--pubg:#9d8ff710;
-  --gr:#2dd4a0;--grbg:#2dd4a010;
-  --tx:#eeeef8;--mu:#6868a0;--mu2:#3a3a60;
-  --red:#f87171;--rbg:#f8717118;
-  --ra:10px;
-}
+:root{--bg:#08080d;--s1:#0f0f16;--s2:#16161f;--s3:#1c1c27;--b:#ffffff0d;--b2:#ffffff18;--b3:#ffffff28;--pu:#9d8ff7;--pu2:#7c6ef0;--pubg:#9d8ff710;--gr:#2dd4a0;--grbg:#2dd4a010;--tx:#eeeef8;--mu:#6868a0;--mu2:#3a3a60;--red:#f87171;--rbg:#f8717118;--ra:10px}
 body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;min-height:100vh;max-width:760px;margin:0 auto;padding:24px 16px 80px}
 .hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:32px}
 .logo{font-size:1rem;font-weight:700;color:var(--pu);letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
 .logo-dot{width:8px;height:8px;border-radius:50%;background:var(--pu)}
 .sync-dot{width:8px;height:8px;border-radius:50%;background:var(--mu);transition:background .3s;flex-shrink:0}
-.sync-dot.ok{background:var(--gr)}
-.sync-dot.err{background:var(--red)}
-.sync-dot.loading{background:#f59e0b;animation:pulse 1s infinite}
+.sync-dot.ok{background:var(--gr)}.sync-dot.err{background:var(--red)}.sync-dot.loading{background:#f59e0b;animation:pulse 1s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 .sync-label{font-size:.7rem;color:var(--mu);font-weight:600}
 .sync-wrap{display:flex;align-items:center;gap:6px}
 .nav{display:flex;background:var(--s2);border:1px solid var(--b2);border-radius:12px;padding:4px;gap:2px}
-.nb{padding:7px 16px;border-radius:9px;border:none;background:transparent;color:var(--mu);cursor:pointer;font-size:.8rem;font-weight:600;transition:all .15s;letter-spacing:.01em}
-.nb.on{background:var(--s3);color:var(--tx);box-shadow:0 1px 4px #00000040}
+.nb{padding:7px 16px;border-radius:9px;border:none;background:transparent;color:var(--mu);cursor:pointer;font-size:.8rem;font-weight:600;transition:all .15s}
+.nb.on{background:var(--s3);color:var(--tx)}
 .panel{display:none}.panel.show{display:block}
 input[type=text],input[type=date]{width:100%;background:var(--s2);border:1px solid var(--b2);border-radius:var(--ra);color:var(--tx);padding:10px 14px;font-size:.87rem;outline:none;transition:border-color .2s;font-family:inherit}
-input[type=text]:focus,input[type=date]:focus{border-color:var(--pu);box-shadow:0 0 0 3px var(--pubg)}
-input::placeholder{color:var(--mu2)}
+input:focus{border-color:var(--pu)}input::placeholder{color:var(--mu2)}
 label{display:block;font-size:.68rem;color:var(--mu);font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px}
-.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 18px;border-radius:var(--ra);border:none;font-size:.84rem;font-weight:600;cursor:pointer;transition:all .15s;font-family:inherit;letter-spacing:.01em}
-.bp{background:var(--pu2);color:#fff}.bp:hover{background:var(--pu);transform:translateY(-1px)}
-.bg2{background:#059669;color:#fff}.bg2:hover{background:var(--gr);transform:translateY(-1px)}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 18px;border-radius:var(--ra);border:none;font-size:.84rem;font-weight:600;cursor:pointer;transition:all .15s;font-family:inherit}
+.bp{background:var(--pu2);color:#fff}.bp:hover{background:var(--pu)}
+.bg2{background:#059669;color:#fff}.bg2:hover{background:var(--gr)}
 .bh{background:transparent;border:1px solid var(--b2);color:var(--mu);font-size:.77rem;padding:7px 14px;border-radius:9px;cursor:pointer;font-family:inherit;transition:all .15s;font-weight:600}
-.bh:hover{color:var(--tx);border-color:var(--b3);background:var(--s2)}
-.bh.s{color:var(--pu);border-color:var(--pu2)}.bh.s:hover{background:var(--pubg)}
-.bh.a{color:var(--gr);border-color:#059669}.bh.a:hover{background:var(--grbg)}
-.bd{background:transparent;border:1px solid var(--rbg);color:var(--red);font-size:.75rem;padding:6px 12px;border-radius:8px;cursor:pointer;font-family:inherit;transition:all .15s;font-weight:600}
-.bd:hover{background:var(--rbg)}
+.bh:hover{color:var(--tx);background:var(--s2)}.bh.s{color:var(--pu);border-color:var(--pu2)}.bh.s:hover{background:var(--pubg)}.bh.a{color:var(--gr);border-color:#059669}.bh.a:hover{background:var(--grbg)}
+.bd{background:transparent;border:1px solid var(--rbg);color:var(--red);font-size:.75rem;padding:6px 12px;border-radius:8px;cursor:pointer;font-family:inherit;transition:all .15s;font-weight:600}.bd:hover{background:var(--rbg)}
 .card{background:var(--s1);border:1px solid var(--b2);border-radius:16px;padding:20px;margin-bottom:16px}
 .ct{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--mu);margin-bottom:18px}
-.row{display:flex;gap:10px;align-items:flex-end;margin-bottom:12px;flex-wrap:wrap}
-.fd{flex:1;min-width:120px}
+.row{display:flex;gap:10px;align-items:flex-end;margin-bottom:12px;flex-wrap:wrap}.fd{flex:1;min-width:120px}
 .view{display:none}.view.show{display:block}
 .ec{background:var(--s1);border:1px solid var(--b2);border-radius:14px;padding:15px 18px;margin-bottom:9px;display:flex;align-items:center;gap:14px;cursor:pointer;transition:all .2s}
-.ec:hover{border-color:var(--pu2);background:var(--s2);transform:translateY(-1px)}
+.ec:hover{border-color:var(--pu2);background:var(--s2)}
 .datebox{background:var(--s3);border-radius:9px;padding:7px 10px;text-align:center;flex-shrink:0;min-width:50px;border:1px solid var(--b)}
-.dday{font-size:1.25rem;font-weight:800;line-height:1;color:var(--tx)}
-.dmon{font-size:.6rem;color:var(--mu);text-transform:uppercase;letter-spacing:.07em;margin-top:2px}
+.dday{font-size:1.25rem;font-weight:800;line-height:1}.dmon{font-size:.6rem;color:var(--mu);text-transform:uppercase;letter-spacing:.07em;margin-top:2px}
 .epills{display:flex;gap:6px;flex-wrap:wrap;margin-top:7px}
 .pill{display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:.71rem;font-weight:700;gap:3px}
-.ps{background:var(--pubg);color:var(--pu);border:1px solid #7c6ef040}
-.pa{background:var(--grbg);color:var(--gr);border:1px solid #05996940}
-.ppct{opacity:.75;font-size:.66rem}
+.ps{background:var(--pubg);color:var(--pu);border:1px solid #7c6ef040}.pa{background:var(--grbg);color:var(--gr);border:1px solid #05996940}.ppct{opacity:.75;font-size:.66rem}
 .ah{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:22px;gap:12px;flex-wrap:wrap}
-.at{font-size:1rem;font-weight:700;color:var(--tx)}
-.as{font-size:.77rem;color:var(--mu);margin-top:4px}
+.at{font-size:1rem;font-weight:700}.as{font-size:.77rem;color:var(--mu);margin-top:4px}
 .tc{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .colhd{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:8px;padding-bottom:10px;border-bottom:2px solid}
 .colhd.s{border-color:var(--pu2)}.colhd.a{border-color:#059669}
-.collbl{font-size:.69rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
-.collbl.s{color:var(--pu)}.collbl.a{color:var(--gr)}
-.colsub{font-size:.69rem;color:var(--mu);margin-top:2px}
-.colact{display:flex;gap:5px;margin-bottom:9px}
+.collbl{font-size:.69rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em}.collbl.s{color:var(--pu)}.collbl.a{color:var(--gr)}
+.colsub{font-size:.69rem;color:var(--mu);margin-top:2px}.colact{display:flex;gap:5px;margin-bottom:9px}
 .nr{background:var(--s2);border:1px solid var(--b);border-radius:9px;padding:9px 12px;margin-bottom:5px;display:flex;align-items:center;gap:10px;cursor:pointer;transition:all .15s;user-select:none}
-.nr:hover{border-color:var(--b2);background:var(--s3)}
-.nr.cs{background:var(--pubg);border-color:#7c6ef060}
-.nr.ca{background:var(--grbg);border-color:#05996960}
+.nr:hover{border-color:var(--b2);background:var(--s3)}.nr.cs{background:var(--pubg);border-color:#7c6ef060}.nr.ca{background:var(--grbg);border-color:#05996960}
 .tk{width:17px;height:17px;border-radius:5px;border:1.5px solid var(--b3);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:10px;color:transparent;transition:all .15s}
-.nr.cs .tk{background:var(--pu2);border-color:var(--pu2);color:#fff}
-.nr.ca .tk{background:#059669;border-color:#059669;color:#fff}
-.nlbl{font-size:.83rem;font-weight:500;color:var(--tx)}
-.sbar{position:sticky;bottom:16px;display:flex;justify-content:flex-end;margin-top:20px}
+.nr.cs .tk{background:var(--pu2);border-color:var(--pu2);color:#fff}.nr.ca .tk{background:#059669;border-color:#059669;color:#fff}
+.nlbl{font-size:.83rem;font-weight:500}.sbar{position:sticky;bottom:16px;display:flex;justify-content:flex-end;margin-top:20px}
 .hc{background:var(--s1);border:1px solid var(--b2);border-radius:14px;padding:18px;margin-bottom:12px}
-.hdate{font-weight:700;font-size:.93rem;margin-bottom:16px;color:var(--tx)}
-.h2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.hlbl{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
-.hlbl.s{color:var(--pu)}.hlbl.a{color:var(--gr)}
-.bwrap{height:4px;background:var(--s3);border-radius:2px;margin-bottom:10px;overflow:hidden}
-.bfill{height:100%;border-radius:2px;transition:width .4s}
-.bfill.s{background:var(--pu)}.bfill.a{background:var(--gr)}
-.chips{display:flex;flex-wrap:wrap;gap:4px}
-.chip{background:var(--s2);border:1px solid var(--b);border-radius:20px;padding:3px 10px;font-size:.71rem;color:var(--tx)}
-.chip.ab{opacity:.3;text-decoration:line-through;color:var(--mu)}
+.hdate{font-weight:700;font-size:.93rem;margin-bottom:16px}.h2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.hlbl{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}.hlbl.s{color:var(--pu)}.hlbl.a{color:var(--gr)}
+.bwrap{height:4px;background:var(--s3);border-radius:2px;margin-bottom:10px;overflow:hidden}.bfill{height:100%;border-radius:2px}.bfill.s{background:var(--pu)}.bfill.a{background:var(--gr)}
+.chips{display:flex;flex-wrap:wrap;gap:4px}.chip{background:var(--s2);border:1px solid var(--b);border-radius:20px;padding:3px 10px;font-size:.71rem}.chip.ab{opacity:.3;text-decoration:line-through;color:var(--mu)}
 .sgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px}
 .sbox{background:var(--s1);border:1px solid var(--b2);border-radius:12px;padding:14px;text-align:center}
-.snum{font-size:1.6rem;font-weight:800;line-height:1;color:var(--tx)}
-.slbl{font-size:.62rem;color:var(--mu);text-transform:uppercase;letter-spacing:.07em;margin-top:5px}
+.snum{font-size:1.6rem;font-weight:800;line-height:1}.slbl{font-size:.62rem;color:var(--mu);text-transform:uppercase;letter-spacing:.07em;margin-top:5px}
 .mc{background:var(--s1);border:1px solid var(--b2);border-radius:12px;padding:12px 16px;margin-bottom:8px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.mn{font-weight:600;font-size:.87rem;min-width:100px;flex:0 0 auto;color:var(--tx)}
-.mbars{flex:1;min-width:140px}
-.mbr{display:flex;align-items:center;gap:8px;margin-bottom:5px}
-.mbl{font-size:.67rem;font-weight:700;width:11px}
-.mbl.s{color:var(--pu)}.mbl.a{color:var(--gr)}
-.mbb{flex:1;height:5px;background:var(--s3);border-radius:3px;overflow:hidden}
-.mbf{height:100%;border-radius:3px;transition:width .3s}
-.mbf.s{background:var(--pu)}.mbf.a{background:var(--gr)}
-.mbv{font-size:.67rem;font-weight:700;min-width:72px;text-align:right}
-.mbv.s{color:var(--pu)}.mbv.a{color:var(--gr)}
+.mn{font-weight:600;font-size:.87rem;min-width:100px;flex:0 0 auto}.mbars{flex:1;min-width:140px}
+.mbr{display:flex;align-items:center;gap:8px;margin-bottom:5px}.mbl{font-size:.67rem;font-weight:700;width:11px}.mbl.s{color:var(--pu)}.mbl.a{color:var(--gr)}
+.mbb{flex:1;height:5px;background:var(--s3);border-radius:3px;overflow:hidden}.mbf{height:100%;border-radius:3px}.mbf.s{background:var(--pu)}.mbf.a{background:var(--gr)}
+.mbv{font-size:.67rem;font-weight:700;min-width:72px;text-align:right}.mbv.s{color:var(--pu)}.mbv.a{color:var(--gr)}
 .empty{text-align:center;color:var(--mu);padding:52px 20px;font-size:.84rem;line-height:1.6}
-
-/* SETUP SCREEN */
-.setup{background:var(--s1);border:1px solid var(--b2);border-radius:16px;padding:32px 24px;text-align:center;max-width:500px;margin:60px auto}
-.setup h2{font-size:1.1rem;font-weight:700;margin-bottom:10px;color:var(--tx)}
-.setup p{font-size:.85rem;color:var(--mu);margin-bottom:24px;line-height:1.7}
-.setup input{text-align:left;margin-bottom:14px}
-.setup .hint{font-size:.75rem;color:var(--mu2);margin-top:-8px;margin-bottom:16px;text-align:left}
-
-@media(max-width:520px){
-  .tc,.h2{grid-template-columns:1fr}
-  .sgrid{grid-template-columns:repeat(2,1fr)}
-  .row{flex-direction:column}
-}
+@media(max-width:520px){.tc,.h2{grid-template-columns:1fr}.sgrid{grid-template-columns:repeat(2,1fr)}.row{flex-direction:column}}
 </style>
 </head>
 <body>
-
-<!-- SETUP SCREEN (shown when no URL configured) -->
-<div id="setup-screen" style="display:none">
-  <div class="setup">
-    <div style="font-size:2rem;margin-bottom:12px">🔗</div>
-    <h2>Connect to Google Sheet</h2>
-    <p>Paste your Google Apps Script Web App URL below.<br>This connects your tracker so everyone shares the same data.</p>
-    <label>Web App URL</label>
-    <input type="text" id="url-input" placeholder="https://script.google.com/macros/s/...">
-    <div class="hint">You get this URL after deploying the script in Google Apps Script</div>
-    <button class="btn bp" style="width:100%;justify-content:center" onclick="saveUrl()">Connect &amp; Start</button>
-  </div>
-</div>
-
-<!-- MAIN APP -->
-<div id="main-app" style="display:none">
+<div id="main-app">
   <div class="hdr">
-    <div class="logo">
-      <span class="logo-dot"></span>
-      Attendance
-    </div>
+    <div class="logo"><span class="logo-dot"></span>Attendance</div>
     <div style="display:flex;align-items:center;gap:14px">
-      <div class="sync-wrap">
-        <div class="sync-dot" id="sync-dot"></div>
-        <span class="sync-label" id="sync-label">Connecting...</span>
-      </div>
+      <div class="sync-wrap"><div class="sync-dot" id="sync-dot"></div><span class="sync-label" id="sync-label">Connecting...</span></div>
       <div class="nav">
         <button class="nb on" onclick="go(0)">Events</button>
         <button class="nb" onclick="go(1)">History</button>
@@ -153,24 +82,14 @@ label{display:block;font-size:.68rem;color:var(--mu);font-weight:700;text-transf
       </div>
     </div>
   </div>
-
   <div class="panel show" id="p0">
     <div class="view show" id="v0">
       <div class="card">
         <div class="ct">Create new event</div>
         <div class="row">
-          <div class="fd" style="flex:0 0 150px">
-            <label>Date</label>
-            <input type="date" id="edate">
-          </div>
-          <div class="fd">
-            <label style="color:var(--pu)">Session name</label>
-            <input type="text" id="eses" placeholder="e.g. Arabic study">
-          </div>
-          <div class="fd">
-            <label style="color:var(--gr)">Activity name</label>
-            <input type="text" id="eact" placeholder="e.g. Football">
-          </div>
+          <div class="fd" style="flex:0 0 150px"><label>Date</label><input type="date" id="edate"></div>
+          <div class="fd"><label style="color:var(--pu)">Session name</label><input type="text" id="eses" placeholder="e.g. Arabic study"></div>
+          <div class="fd"><label style="color:var(--gr)">Activity name</label><input type="text" id="eact" placeholder="e.g. Football"></div>
         </div>
         <button class="btn bp" onclick="mkEvent()">+ Create event</button>
       </div>
@@ -178,306 +97,53 @@ label{display:block;font-size:.68rem;color:var(--mu);font-weight:700;text-transf
     </div>
     <div class="view" id="v1">
       <div class="ah">
-        <div>
-          <div class="at" id="att"></div>
-          <div class="as" id="ats"></div>
-        </div>
+        <div><div class="at" id="att"></div><div class="as" id="ats"></div></div>
         <button class="bh" onclick="back()">&larr; Back</button>
       </div>
-      <div class="tc">
-        <div id="sp"></div>
-        <div id="ap"></div>
-      </div>
-      <div class="sbar">
-        <button class="btn bg2" onclick="back()">&#10003; Save &amp; done</button>
-      </div>
+      <div class="tc"><div id="sp"></div><div id="ap"></div></div>
+      <div class="sbar"><button class="btn bg2" onclick="back()">&#10003; Save &amp; done</button></div>
     </div>
   </div>
-
   <div class="panel" id="p1"><div id="hlist"></div></div>
-
   <div class="panel" id="p2">
     <div class="sgrid" id="sgrid"></div>
     <div class="card">
       <div class="ct">Add member</div>
       <div class="row" style="margin-bottom:0">
-        <div class="fd">
-          <input type="text" id="mi" placeholder="Full name" onkeydown="if(event.key==='Enter')addM()">
-        </div>
+        <div class="fd"><input type="text" id="mi" placeholder="Full name" onkeydown="if(event.key==='Enter')addM()"></div>
         <button class="btn bp" onclick="addM()" style="flex-shrink:0">Add</button>
       </div>
     </div>
     <div id="mlist"></div>
   </div>
 </div>
-
 <script>
-var DF = ["Desouky","Solom","Hassan","Malek","Tamra","Kerdany","Moudy","Kiwi","Ibrahim","Omar Samir","Abdallah","Hussien","Mahmoud Hatem","Hozayfa","Ahmed Gamal","Yassin Azmy","Sheekh","Marwan","Nouh","Karim Atteya","Bido","Omar Ibrahim","Ali Alaa"];
-var MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-var SCRIPT_URL = localStorage.getItem("att_url") || "https://script.google.com/macros/s/AKfycbw9V8dG1MmVsWBOa05-1fee3RMk3LKRGTP0A8_ity_d-xscZjjRoTXcTNvEnrgx6HKa/exec";
-var ST = { members: DF.slice(), events: [] };
-var curId = null;
-
-// ── SETUP ──
-function saveUrl() {
-  var u = document.getElementById("url-input").value.trim();
-  if (!u.startsWith("https://script.google.com")) { alert("That doesn't look right. Paste the full URL from Google Apps Script."); return; }
-  localStorage.setItem("att_url", u);
-  SCRIPT_URL = u;
-  startApp();
-}
-
-function startApp() {
-  document.getElementById("setup-screen").style.display = "none";
-  document.getElementById("main-app").style.display = "block";
-  setSync("loading", "Connecting...");
-  (function() {
-    var d = new Date();
-    var y = d.getFullYear(), m = String(d.getMonth()+1).padStart(2,"0"), dd = String(d.getDate()).padStart(2,"0");
-    document.getElementById("edate").value = y+"-"+m+"-"+dd;
-  })();
-  loadFromCloud();
-}
-
-// ── SYNC ──
-function setSync(state, label) {
-  var dot = document.getElementById("sync-dot");
-  var lbl = document.getElementById("sync-label");
-  dot.className = "sync-dot " + state;
-  lbl.textContent = label;
-}
-
-function loadFromCloud() {
-  setSync("loading", "Loading...");
-  fetch(SCRIPT_URL + "?action=getData")
-    .then(function(r) { return r.json(); })
-    .then(function(res) {
-      if (res.success && res.data) {
-        if (res.data.members && res.data.members.length) ST.members = res.data.members;
-        if (res.data.events) ST.events = res.data.events;
-      }
-      setSync("ok", "Synced");
-      drawList();
-    })
-    .catch(function() {
-      setSync("err", "Offline");
-      drawList();
-    });
-}
-
-function saveToCloud() {
-  setSync("loading", "Saving...");
-  var url = SCRIPT_URL + "?action=saveData&data=" + encodeURIComponent(JSON.stringify(ST));
-  fetch(url)
-    .then(function(r) { return r.json(); })
-    .then(function(res) {
-      setSync(res.success ? "ok" : "err", res.success ? "Saved" : "Error");
-    })
-    .catch(function() { setSync("err", "Failed to save"); });
-}
-
-// ── NAV ──
-function go(i) {
-  document.querySelectorAll(".nb").forEach(function(b,j){ b.classList.toggle("on", j===i); });
-  [0,1,2].forEach(function(j){ document.getElementById("p"+j).classList.toggle("show", j===i); });
-  if (i===1) { loadFromCloud(); setTimeout(drawHist, 600); }
-  if (i===2) { loadFromCloud(); setTimeout(drawMembers, 600); }
-  if (i===0) { sv(0); drawList(); }
-}
-
-function sv(i) {
-  document.getElementById("v0").classList.toggle("show", i===0);
-  document.getElementById("v1").classList.toggle("show", i===1);
-}
-
-function fd(s) {
-  if (!s) return "";
-  var p = s.split("-");
-  return p[2]+"/"+p[1]+"/"+p[0];
-}
-
-// ── EVENTS ──
-function mkEvent() {
-  var date = document.getElementById("edate").value;
-  var sn = document.getElementById("eses").value.trim();
-  var an = document.getElementById("eact").value.trim();
-  if (!date) { alert("Choose a date"); return; }
-  if (!sn && !an) { alert("Enter a session name, activity name, or both"); return; }
-  var ev = { id: Date.now(), date: date, sname: sn||null, aname: an||null, s:{}, a:{} };
-  ST.events.unshift(ev);
-  saveToCloud();
-  document.getElementById("eses").value = "";
-  document.getElementById("eact").value = "";
-  drawList();
-  openEv(ev.id);
-}
-
-function drawList() {
-  var el = document.getElementById("evl");
-  if (!ST.events.length) { el.innerHTML = '<div class="empty">No events yet<br>Create your first one above</div>'; return; }
-  var tot = ST.members.length;
-  el.innerHTML = ST.events.map(function(ev) {
-    var sC = ev.sname ? Object.values(ev.s).filter(Boolean).length : null;
-    var aC = ev.aname ? Object.values(ev.a).filter(Boolean).length : null;
-    var sP = (ev.sname && tot>0) ? Math.round(sC/tot*100) : null;
-    var aP = (ev.aname && tot>0) ? Math.round(aC/tot*100) : null;
-    var p = ev.date.split("-");
-    var mon = MONTHS[parseInt(p[1],10)-1] || "";
-    return '<div class="ec" onclick="openEv('+ev.id+')">'+
-      '<div class="datebox"><div class="dday">'+p[2]+'</div><div class="dmon">'+mon+'</div></div>'+
-      '<div style="flex:1"><div style="font-size:.88rem;font-weight:600">'+fd(ev.date)+'</div>'+
-      '<div class="epills">'+
-        (ev.sname ? '<span class="pill ps">S: '+ev.sname+' &middot; '+sC+'/'+tot+'<span class="ppct"> ('+sP+'%)</span></span>' : '')+
-        (ev.aname ? '<span class="pill pa">A: '+ev.aname+' &middot; '+aC+'/'+tot+'<span class="ppct"> ('+aP+'%)</span></span>' : '')+
-      '</div></div>'+
-      '<button class="bd" onclick="event.stopPropagation();delEv('+ev.id+')">&#10005;</button>'+
-    '</div>';
-  }).join("");
-}
-
-function openEv(id) {
-  curId = id;
-  var ev = ST.events.find(function(e){ return e.id===id; });
-  if (!ev) return;
-  document.getElementById("att").textContent = fd(ev.date);
-  document.getElementById("ats").textContent =
-    (ev.sname ? "Session: "+ev.sname : "")+
-    (ev.sname && ev.aname ? " · " : "")+
-    (ev.aname ? "Activity: "+ev.aname : "");
-  drawCol("sp", ev, "s");
-  drawCol("ap", ev, "a");
-  sv(1);
-  window.scrollTo(0,0);
-}
-
-function drawCol(pid, ev, t) {
-  var panel = document.getElementById(pid);
-  var name = t==="s" ? ev.sname : ev.aname;
-  var rc = t==="s" ? "cs" : "ca";
-  var label = t==="s" ? "Session" : "Activity";
-  if (!name) {
-    panel.innerHTML = '<div class="colhd '+t+'"><div><span class="collbl '+t+'">'+label+'</span></div></div>'+
-      '<div style="color:var(--mu);font-size:.8rem;padding:10px 0">Not set for this event</div>';
-    return;
-  }
-  var chk = Object.values(ev[t]).filter(Boolean).length;
-  var tot = ST.members.length;
-  var pct = tot>0 ? Math.round(chk/tot*100) : 0;
-  panel.innerHTML =
-    '<div class="colhd '+t+'">'+
-      '<div><span class="collbl '+t+'">'+label+'</span><div class="colsub">'+name+' &middot; '+chk+'/'+tot+' ('+pct+'%)</div></div>'+
-    '</div>'+
-    '<div class="colact">'+
-      '<button class="bh '+t+'" onclick="selAll('+ev.id+',\''+t+'\',true)">Select all</button>'+
-      '<button class="bh" onclick="selAll('+ev.id+',\''+t+'\',false)">Clear</button>'+
-    '</div>'+
-    ST.members.map(function(n){
-      var on = ev[t][n] || false;
-      var safe = n.replace(/"/g,"&quot;");
-      return '<div class="nr '+(on?rc:'')+'" onclick="tog('+ev.id+',\''+t+'\',&quot;'+safe+'&quot;)">'+
-        '<div class="tk">&#10003;</div>'+
-        '<div class="nlbl">'+n+'</div>'+
-      '</div>';
-    }).join("");
-}
-
-function tog(id, t, name) {
-  var ev = ST.events.find(function(e){ return e.id===id; });
-  if (!ev) return;
-  ev[t][name] = !ev[t][name];
-  saveToCloud();
-  drawCol(t==="s"?"sp":"ap", ev, t);
-  drawList();
-}
-
-function selAll(id, t, val) {
-  var ev = ST.events.find(function(e){ return e.id===id; });
-  if (!ev) return;
-  ST.members.forEach(function(n){ ev[t][n]=val; });
-  saveToCloud();
-  drawCol(t==="s"?"sp":"ap", ev, t);
-  drawList();
-}
-
-function back() { curId=null; drawList(); sv(0); window.scrollTo(0,0); }
-
-function delEv(id) {
-  if (!confirm("Delete this event?")) return;
-  ST.events = ST.events.filter(function(e){ return e.id!==id; });
-  saveToCloud();
-  drawList();
-}
-
-// ── HISTORY ──
-function drawHist() {
-  var el = document.getElementById("hlist");
-  if (!ST.events.length) { el.innerHTML = '<div class="empty">No events yet</div>'; return; }
-  var tot = ST.members.length;
-  el.innerHTML = ST.events.map(function(ev) {
-    var sP = ev.sname ? ST.members.filter(function(n){ return ev.s[n]; }) : [];
-    var sA = ev.sname ? ST.members.filter(function(n){ return !ev.s[n]; }) : [];
-    var aP = ev.aname ? ST.members.filter(function(n){ return ev.a[n]; }) : [];
-    var aA = ev.aname ? ST.members.filter(function(n){ return !ev.a[n]; }) : [];
-    var sPct = (ev.sname && tot>0) ? Math.round(sP.length/tot*100) : 0;
-    var aPct = (ev.aname && tot>0) ? Math.round(aP.length/tot*100) : 0;
-    function blk(lbl,name,pres,abs,pct,cls) {
-      if (!name) return '<div style="color:var(--mu);font-size:.8rem">No '+lbl.toLowerCase()+'</div>';
-      return '<div>'+
-        '<div class="hlbl '+cls+'">'+lbl+' &mdash; '+name+' ('+pres.length+'/'+tot+' &middot; '+pct+'%)</div>'+
-        '<div class="bwrap"><div class="bfill '+cls+'" style="width:'+pct+'%"></div></div>'+
-        '<div class="chips" style="margin-bottom:7px">'+
-          (pres.length ? pres.map(function(n){ return '<span class="chip">'+n+'</span>'; }).join("") : '<span style="color:var(--mu);font-size:.74rem">Nobody attended</span>')+
-        '</div>'+
-        '<div class="chips">'+abs.map(function(n){ return '<span class="chip ab">'+n+'</span>'; }).join("")+'</div>'+
-      '</div>';
-    }
-    return '<div class="hc"><div class="hdate">'+fd(ev.date)+'</div><div class="h2">'+
-      blk("Session",ev.sname,sP,sA,sPct,"s")+blk("Activity",ev.aname,aP,aA,aPct,"a")+
-    '</div></div>';
-  }).join("");
-}
-
-// ── MEMBERS ──
-function drawMembers() {
-  var sE = ST.events.filter(function(e){ return e.sname; });
-  var aE = ST.events.filter(function(e){ return e.aname; });
-  document.getElementById("sgrid").innerHTML =
-    '<div class="sbox"><div class="snum">'+ST.members.length+'</div><div class="slbl">Members</div></div>'+
-    '<div class="sbox"><div class="snum">'+ST.events.length+'</div><div class="slbl">Events</div></div>'+
-    '<div class="sbox"><div class="snum" style="color:var(--pu)">'+sE.length+'</div><div class="slbl">Sessions</div></div>'+
-    '<div class="sbox"><div class="snum" style="color:var(--gr)">'+aE.length+'</div><div class="slbl">Activities</div></div>';
-  document.getElementById("mlist").innerHTML = ST.members.map(function(n,i){
-    var sA = sE.filter(function(e){ return e.s[n]; }).length;
-    var aA = aE.filter(function(e){ return e.a[n]; }).length;
-    var sP = sE.length>0 ? Math.round(sA/sE.length*100) : 0;
-    var aP = aE.length>0 ? Math.round(aA/aE.length*100) : 0;
-    return '<div class="mc"><div class="mn">'+n+'</div>'+
-      '<div class="mbars">'+
-        '<div class="mbr"><span class="mbl s">S</span><div class="mbb"><div class="mbf s" style="width:'+sP+'%"></div></div><span class="mbv s">'+sA+'/'+sE.length+' ('+sP+'%)</span></div>'+
-        '<div class="mbr"><span class="mbl a">A</span><div class="mbb"><div class="mbf a" style="width:'+aP+'%"></div></div><span class="mbv a">'+aA+'/'+aE.length+' ('+aP+'%)</span></div>'+
-      '</div>'+
-      '<button class="bd" onclick="delM('+i+')">&#10005;</button></div>';
-  }).join("");
-}
-
-function addM() {
-  var inp = document.getElementById("mi"), n = inp.value.trim();
-  if (!n) return;
-  if (ST.members.indexOf(n) !== -1) { alert("Already exists"); return; }
-  ST.members.push(n); saveToCloud(); inp.value = ""; drawMembers();
-}
-
-function delM(i) {
-  if (!confirm('Remove "'+ST.members[i]+'"?')) return;
-  ST.members.splice(i,1); saveToCloud(); drawMembers();
-}
-
-// ── INIT ──
-if (SCRIPT_URL && SCRIPT_URL.startsWith("https://script.google.com")) {
-  startApp();
-} else {
-  document.getElementById("setup-screen").style.display = "block";
-}
+var DF=["Desouky","Solom","Hassan","Malek","Tamra","Kerdany","Moudy","Kiwi","Ibrahim","Omar Samir","Abdallah","Hussien","Mahmoud Hatem","Hozayfa","Ahmed Gamal","Yassin Azmy","Sheekh","Marwan","Nouh","Karim Atteya","Bido","Omar Ibrahim","Ali Alaa"];
+var MONTHS=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+var SCRIPT_URL="https://script.google.com/macros/s/AKfycbw9V8dG1MmVsWBOa05-1fee3RMk3LKRGTP0A8_ity_d-xscZjjRoTXcTNvEnrgx6HKa/exec";
+var ST={members:DF.slice(),events:[]};
+var curId=null;
+function setSync(s,l){document.getElementById("sync-dot").className="sync-dot "+s;document.getElementById("sync-label").textContent=l}
+function jsonp(url,cb){var n="cb_"+Date.now();window[n]=function(d){cb(d);delete window[n];document.body.removeChild(sc)};var sc=document.createElement("script");sc.src=url+"&callback="+n;sc.onerror=function(){cb(null);document.body.removeChild(sc)};document.body.appendChild(sc)}
+function loadFromCloud(){setSync("loading","Loading...");jsonp(SCRIPT_URL+"?action=getData",function(res){if(!res){setSync("err","Offline");drawList();return}if(res.success&&res.data){if(res.data.members&&res.data.members.length)ST.members=res.data.members;if(res.data.events)ST.events=res.data.events}setSync("ok","Synced");drawList()})}
+function saveToCloud(){setSync("loading","Saving...");var url=SCRIPT_URL+"?action=saveData&data="+encodeURIComponent(JSON.stringify(ST));jsonp(url,function(res){if(!res){setSync("err","Failed");return}setSync(res.success?"ok":"err",res.success?"Saved":"Error")})}
+function go(i){document.querySelectorAll(".nb").forEach(function(b,j){b.classList.toggle("on",j===i)});[0,1,2].forEach(function(j){document.getElementById("p"+j).classList.toggle("show",j===i)});if(i===1){loadFromCloud();setTimeout(drawHist,800)}if(i===2){loadFromCloud();setTimeout(drawMembers,800)}if(i===0){sv(0);drawList()}}
+function sv(i){document.getElementById("v0").classList.toggle("show",i===0);document.getElementById("v1").classList.toggle("show",i===1)}
+function fd(s){if(!s)return"";var p=s.split("-");return p[2]+"/"+p[1]+"/"+p[0]}
+(function(){var d=new Date();document.getElementById("edate").value=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")})();
+function mkEvent(){var date=document.getElementById("edate").value,sn=document.getElementById("eses").value.trim(),an=document.getElementById("eact").value.trim();if(!date){alert("Choose a date");return}if(!sn&&!an){alert("Enter a session or activity name");return}var ev={id:Date.now(),date:date,sname:sn||null,aname:an||null,s:{},a:{}};ST.events.unshift(ev);saveToCloud();document.getElementById("eses").value="";document.getElementById("eact").value="";drawList();openEv(ev.id)}
+function drawList(){var el=document.getElementById("evl");if(!ST.events.length){el.innerHTML='<div class="empty">No events yet<br>Create your first one above</div>';return}var tot=ST.members.length;el.innerHTML=ST.events.map(function(ev){var sC=ev.sname?Object.values(ev.s).filter(Boolean).length:null,aC=ev.aname?Object.values(ev.a).filter(Boolean).length:null,sP=ev.sname&&tot>0?Math.round(sC/tot*100):null,aP=ev.aname&&tot>0?Math.round(aC/tot*100):null,p=ev.date.split("-"),mon=MONTHS[parseInt(p[1],10)-1]||"";return'<div class="ec" onclick="openEv('+ev.id+')"><div class="datebox"><div class="dday">'+p[2]+'</div><div class="dmon">'+mon+'</div></div><div style="flex:1"><div style="font-size:.88rem;font-weight:600">'+fd(ev.date)+'</div><div class="epills">'+(ev.sname?'<span class="pill ps">S: '+ev.sname+' &middot; '+sC+'/'+tot+'<span class="ppct"> ('+sP+'%)</span></span>':'')+(ev.aname?'<span class="pill pa">A: '+ev.aname+' &middot; '+aC+'/'+tot+'<span class="ppct"> ('+aP+'%)</span></span>':'')+'</div></div><button class="bd" onclick="event.stopPropagation();delEv('+ev.id+')">&#10005;</button></div>'}).join("")}
+function openEv(id){curId=id;var ev=ST.events.find(function(e){return e.id===id});if(!ev)return;document.getElementById("att").textContent=fd(ev.date);document.getElementById("ats").textContent=(ev.sname?"Session: "+ev.sname:"")+(ev.sname&&ev.aname?" · ":"")+(ev.aname?"Activity: "+ev.aname:"");drawCol("sp",ev,"s");drawCol("ap",ev,"a");sv(1);window.scrollTo(0,0)}
+function drawCol(pid,ev,t){var panel=document.getElementById(pid),name=t==="s"?ev.sname:ev.aname,rc=t==="s"?"cs":"ca",label=t==="s"?"Session":"Activity";if(!name){panel.innerHTML='<div class="colhd '+t+'"><div><span class="collbl '+t+'">'+label+'</span></div></div><div style="color:var(--mu);font-size:.8rem;padding:10px 0">Not set for this event</div>';return}var chk=Object.values(ev[t]).filter(Boolean).length,tot=ST.members.length,pct=tot>0?Math.round(chk/tot*100):0;panel.innerHTML='<div class="colhd '+t+'"><div><span class="collbl '+t+'">'+label+'</span><div class="colsub">'+name+' &middot; '+chk+'/'+tot+' ('+pct+'%)</div></div></div><div class="colact"><button class="bh '+t+'" onclick="selAll('+ev.id+',\''+t+'\',true)">Select all</button><button class="bh" onclick="selAll('+ev.id+',\''+t+'\',false)">Clear</button></div>'+ST.members.map(function(n){var on=ev[t][n]||false,safe=n.replace(/"/g,"&quot;");return'<div class="nr '+(on?rc:'')+'" onclick="tog('+ev.id+',\''+t+'\',&quot;'+safe+'&quot;)"><div class="tk">&#10003;</div><div class="nlbl">'+n+'</div></div>'}).join("")}
+function tog(id,t,name){var ev=ST.events.find(function(e){return e.id===id});if(!ev)return;ev[t][name]=!ev[t][name];saveToCloud();drawCol(t==="s"?"sp":"ap",ev,t);drawList()}
+function selAll(id,t,val){var ev=ST.events.find(function(e){return e.id===id});if(!ev)return;ST.members.forEach(function(n){ev[t][n]=val});saveToCloud();drawCol(t==="s"?"sp":"ap",ev,t);drawList()}
+function back(){curId=null;drawList();sv(0);window.scrollTo(0,0)}
+function delEv(id){if(!confirm("Delete this event?"))return;ST.events=ST.events.filter(function(e){return e.id!==id});saveToCloud();drawList()}
+function drawHist(){var el=document.getElementById("hlist");if(!ST.events.length){el.innerHTML='<div class="empty">No events yet</div>';return}var tot=ST.members.length;el.innerHTML=ST.events.map(function(ev){var sP=ev.sname?ST.members.filter(function(n){return ev.s[n]}):[],sA=ev.sname?ST.members.filter(function(n){return!ev.s[n]}):[],aP=ev.aname?ST.members.filter(function(n){return ev.a[n]}):[],aA=ev.aname?ST.members.filter(function(n){return!ev.a[n]}):[],sPct=ev.sname&&tot>0?Math.round(sP.length/tot*100):0,aPct=ev.aname&&tot>0?Math.round(aP.length/tot*100):0;function blk(lbl,name,pres,abs,pct,cls){if(!name)return'<div style="color:var(--mu);font-size:.8rem">No '+lbl.toLowerCase()+'</div>';return'<div><div class="hlbl '+cls+'">'+lbl+' &mdash; '+name+' ('+pres.length+'/'+tot+' &middot; '+pct+'%)</div><div class="bwrap"><div class="bfill '+cls+'" style="width:'+pct+'%"></div></div><div class="chips" style="margin-bottom:7px">'+(pres.length?pres.map(function(n){return'<span class="chip">'+n+'</span>'}).join(""):'<span style="color:var(--mu);font-size:.74rem">Nobody attended</span>')+'</div><div class="chips">'+abs.map(function(n){return'<span class="chip ab">'+n+'</span>'}).join("")+'</div></div>'}return'<div class="hc"><div class="hdate">'+fd(ev.date)+'</div><div class="h2">'+blk("Session",ev.sname,sP,sA,sPct,"s")+blk("Activity",ev.aname,aP,aA,aPct,"a")+'</div></div>'}).join("")}
+function drawMembers(){var sE=ST.events.filter(function(e){return e.sname}),aE=ST.events.filter(function(e){return e.aname});document.getElementById("sgrid").innerHTML='<div class="sbox"><div class="snum">'+ST.members.length+'</div><div class="slbl">Members</div></div><div class="sbox"><div class="snum">'+ST.events.length+'</div><div class="slbl">Events</div></div><div class="sbox"><div class="snum" style="color:var(--pu)">'+sE.length+'</div><div class="slbl">Sessions</div></div><div class="sbox"><div class="snum" style="color:var(--gr)">'+aE.length+'</div><div class="slbl">Activities</div></div>';document.getElementById("mlist").innerHTML=ST.members.map(function(n,i){var sA=sE.filter(function(e){return e.s[n]}).length,aA=aE.filter(function(e){return e.a[n]}).length,sP=sE.length>0?Math.round(sA/sE.length*100):0,aP=aE.length>0?Math.round(aA/aE.length*100):0;return'<div class="mc"><div class="mn">'+n+'</div><div class="mbars"><div class="mbr"><span class="mbl s">S</span><div class="mbb"><div class="mbf s" style="width:'+sP+'%"></div></div><span class="mbv s">'+sA+'/'+sE.length+' ('+sP+'%)</span></div><div class="mbr"><span class="mbl a">A</span><div class="mbb"><div class="mbf a" style="width:'+aP+'%"></div></div><span class="mbv a">'+aA+'/'+aE.length+' ('+aP+'%)</span></div></div><button class="bd" onclick="delM('+i+')">&#10005;</button></div>'}).join("")}
+function addM(){var inp=document.getElementById("mi"),n=inp.value.trim();if(!n)return;if(ST.members.indexOf(n)!==-1){alert("Already exists");return}ST.members.push(n);saveToCloud();inp.value="";drawMembers()}
+function delM(i){if(!confirm('Remove "'+ST.members[i]+'"?'))return;ST.members.splice(i,1);saveToCloud();drawMembers()}
+loadFromCloud();
 </script>
 </body>
 </html>

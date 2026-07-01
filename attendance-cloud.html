@@ -8,30 +8,30 @@
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--bg:#08080d;--s1:#0f0f16;--s2:#16161f;--s3:#1c1c27;--b:#ffffff0d;--b2:#ffffff18;--b3:#ffffff28;--pu:#9d8ff7;--pu2:#7c6ef0;--pubg:#9d8ff710;--gr:#2dd4a0;--grbg:#2dd4a010;--tx:#eeeef8;--mu:#6868a0;--mu2:#3a3a60;--red:#f87171;--rbg:#f8717118;--ra:10px}
 body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;min-height:100vh;max-width:760px;margin:0 auto;padding:16px 16px 80px}
-.hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:8px}
+.hdr{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
+.hdr-top{display:flex;align-items:center;justify-content:space-between}
 .logo{font-size:1rem;font-weight:700;color:var(--pu);display:flex;align-items:center;gap:8px}
 .logo-dot{width:8px;height:8px;border-radius:50%;background:var(--pu)}
 .sync-dot{width:8px;height:8px;border-radius:50%;background:var(--mu);transition:background .3s;flex-shrink:0}
 .sync-dot.ok{background:var(--gr)}.sync-dot.err{background:var(--red)}.sync-dot.loading{background:#f59e0b;animation:pulse 1s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 .sync-label{font-size:.68rem;color:var(--mu);font-weight:600}
-.sync-wrap{display:flex;align-items:center;gap:5px;flex-shrink:0}
-.nav{display:flex;background:var(--s2);border:1px solid var(--b2);border-radius:10px;padding:3px;gap:2px;flex-shrink:0}
-.nb{padding:6px 12px;border-radius:8px;border:none;background:transparent;color:var(--mu);cursor:pointer;font-size:.75rem;font-weight:600;transition:all .15s}
+.sync-wrap{display:flex;align-items:center;gap:5px}
+.nav{display:flex;background:var(--s2);border:1px solid var(--b2);border-radius:10px;padding:3px;gap:2px;width:100%}
+.nb{flex:1;padding:8px 4px;border-radius:8px;border:none;background:transparent;color:var(--mu);cursor:pointer;font-size:.78rem;font-weight:600;transition:all .15s;text-align:center}
 .nb.on{background:var(--s3);color:var(--tx)}
 .panel{display:none}.panel.show{display:block}
 input[type=text],input[type=date]{width:100%;background:var(--s2);border:1px solid var(--b2);border-radius:var(--ra);color:var(--tx);padding:10px 14px;font-size:.87rem;outline:none;transition:border-color .2s;font-family:inherit}
 input:focus{border-color:var(--pu)}input::placeholder{color:var(--mu2)}
 label{display:block;font-size:.68rem;color:var(--mu);font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px}
-.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 18px;border-radius:var(--ra);border:none;font-size:.84rem;font-weight:600;cursor:pointer;transition:all .15s;font-family:inherit}
-.bp{background:var(--pu2);color:#fff}.bp:hover{background:var(--pu)}
-.bg2{background:#059669;color:#fff}.bg2:hover{background:var(--gr)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:10px 18px;border-radius:var(--ra);border:none;font-size:.84rem;font-weight:600;cursor:pointer;transition:all .15s;font-family:inherit;width:100%}
+.bp{background:var(--pu2);color:#fff}.bg2{background:#059669;color:#fff}
 .bh{background:transparent;border:1px solid var(--b2);color:var(--mu);font-size:.75rem;padding:6px 12px;border-radius:8px;cursor:pointer;font-family:inherit;transition:all .15s;font-weight:600}
-.bh:hover{color:var(--tx);background:var(--s2)}.bh.s{color:var(--pu);border-color:var(--pu2)}.bh.a{color:var(--gr);border-color:#059669}
+.bh.s{color:var(--pu);border-color:var(--pu2)}.bh.a{color:var(--gr);border-color:#059669}
 .bd{background:transparent;border:1px solid var(--rbg);color:var(--red);font-size:.75rem;padding:6px 12px;border-radius:8px;cursor:pointer;font-family:inherit;transition:all .15s;font-weight:600}.bd:hover{background:var(--rbg)}
 .card{background:var(--s1);border:1px solid var(--b2);border-radius:14px;padding:16px;margin-bottom:14px}
 .ct{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--mu);margin-bottom:14px}
-.row{display:flex;gap:10px;align-items:flex-end;margin-bottom:12px;flex-direction:column}
+.col{display:flex;flex-direction:column;gap:12px;margin-bottom:12px}
 .fd{width:100%}
 .view{display:none}.view.show{display:block}
 .ec{background:var(--s1);border:1px solid var(--b2);border-radius:12px;padding:14px 16px;margin-bottom:8px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all .2s}
@@ -49,7 +49,7 @@ label{display:block;font-size:.68rem;color:var(--mu);font-weight:700;text-transf
 .collbl{font-size:.69rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em}.collbl.s{color:var(--pu)}.collbl.a{color:var(--gr)}
 .colsub{font-size:.68rem;color:var(--mu);margin-top:2px}.colact{display:flex;gap:5px;margin-bottom:8px}
 .nr{background:var(--s2);border:1px solid var(--b);border-radius:9px;padding:10px 12px;margin-bottom:5px;display:flex;align-items:center;gap:10px;cursor:pointer;transition:all .15s;user-select:none}
-.nr:hover{border-color:var(--b2)}.nr.cs{background:var(--pubg);border-color:#7c6ef060}.nr.ca{background:var(--grbg);border-color:#05996960}
+.nr.cs{background:var(--pubg);border-color:#7c6ef060}.nr.ca{background:var(--grbg);border-color:#05996960}
 .tk{width:18px;height:18px;border-radius:5px;border:1.5px solid var(--b3);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;color:transparent;transition:all .15s}
 .nr.cs .tk{background:var(--pu2);border-color:var(--pu2);color:#fff}.nr.ca .tk{background:#059669;border-color:#059669;color:#fff}
 .nlbl{font-size:.85rem;font-weight:500}
@@ -74,21 +74,21 @@ label{display:block;font-size:.68rem;color:var(--mu);font-weight:700;text-transf
 <body>
 <div id="main-app">
   <div class="hdr">
-    <div class="logo"><span class="logo-dot"></span>Attendance</div>
-    <div style="display:flex;align-items:center;gap:10px">
+    <div class="hdr-top">
+      <div class="logo"><span class="logo-dot"></span>Attendance</div>
       <div class="sync-wrap"><div class="sync-dot" id="sync-dot"></div><span class="sync-label" id="sync-label">Connecting...</span></div>
-      <div class="nav">
-        <button class="nb on" onclick="go(0)">Events</button>
-        <button class="nb" onclick="go(1)">History</button>
-        <button class="nb" onclick="go(2)">Members</button>
-      </div>
+    </div>
+    <div class="nav">
+      <button class="nb on" onclick="go(0)">Events</button>
+      <button class="nb" onclick="go(1)">History</button>
+      <button class="nb" onclick="go(2)">Members</button>
     </div>
   </div>
   <div class="panel show" id="p0">
     <div class="view show" id="v0">
       <div class="card">
         <div class="ct">Create new event</div>
-        <div class="row">
+        <div class="col">
           <div class="fd"><label>Date</label><input type="date" id="edate"></div>
           <div class="fd"><label style="color:var(--pu)">Session name</label><input type="text" id="eses" placeholder="e.g. Arabic study"></div>
           <div class="fd"><label style="color:var(--gr)">Activity name</label><input type="text" id="eact" placeholder="e.g. Football"></div>
@@ -103,7 +103,7 @@ label{display:block;font-size:.68rem;color:var(--mu);font-weight:700;text-transf
         <button class="bh" onclick="back()">&larr; Back</button>
       </div>
       <div class="tc"><div id="sp"></div><div id="ap"></div></div>
-      <div class="sbar"><button class="btn bg2" onclick="back()">&#10003; Save &amp; done</button></div>
+      <div class="sbar"><button class="btn bg2" style="width:auto;padding:10px 24px" onclick="back()">&#10003; Save &amp; done</button></div>
     </div>
   </div>
   <div class="panel" id="p1"><div id="hlist"></div></div>
@@ -111,9 +111,9 @@ label{display:block;font-size:.68rem;color:var(--mu);font-weight:700;text-transf
     <div class="sgrid" id="sgrid"></div>
     <div class="card">
       <div class="ct">Add member</div>
-      <div class="row" style="margin-bottom:0">
+      <div class="col" style="margin-bottom:0">
         <div class="fd"><input type="text" id="mi" placeholder="Full name" onkeydown="if(event.key==='Enter')addM()"></div>
-        <button class="btn bp" onclick="addM()" style="flex-shrink:0;width:100%">Add</button>
+        <button class="btn bp" onclick="addM()">Add</button>
       </div>
     </div>
     <div id="mlist"></div>
